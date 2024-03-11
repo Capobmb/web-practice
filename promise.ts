@@ -1,17 +1,4 @@
-function dummyFetch(target: string) {
-  return new Promise((resolve, reject) => {
-    console.log("Promise constructor executing...", resolve, reject);
-    // ランダムな時間で履行か拒否をする
-    setTimeout(() => {
-      // success で始まるならresolveする
-      if (target.startsWith("/success")) {
-        resolve({ body: `Response body of ${target}` });
-      } else {
-        reject(new Error("Target not found."));
-      }
-    }, 1000 * Math.random());
-  });
-}
+import { dummyFetch } from "./dummyFetch";
 
 dummyFetch("/success/foo")
   .then(
